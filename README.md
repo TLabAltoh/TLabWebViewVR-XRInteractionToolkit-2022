@@ -6,6 +6,7 @@
 
 ## Note
 - Unity versions of 2021.* recommended creating custom android manifests, but since 2022.1.* ``` <activity></activity> ``` is not automatically added, and this was causing build errors.
+	- The custom android manifest shown in this repository does not work with version 2022, so please build without it. (Uncheck Custom Android Manifest in Project Settings)
 - When specifying OpenXR as the XR plugin provider, a part of the manifest is forcibly deleted and an error occurs in WebView. Therefore, it is recommended to specify Oculus as the plugin provider.
 	```xml
 	<!-- Error: net::ERR_CACHE_MISS -->
@@ -38,4 +39,5 @@ git clone . https://github.com/TLabAltoh/TLabWebViewVR-XRInteractionToolkit-2022
 	- Minimux API Level: 29 
 	- Target API Level: 32
 	- Set plugin provider to Oculus
+- Uncheck Custom Android Manifest in Project Settings --> Player --> Publishing Settings
 - XR Plug-in Management --> Android, Set plugin provider to Oculus (not OpenXR)
