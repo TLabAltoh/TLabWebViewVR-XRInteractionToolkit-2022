@@ -62,5 +62,4 @@ git clone . https://github.com/TLabAltoh/TLabWebViewVR-XRInteractionToolkit-2022
 	- Minimux API Level: 29 
 	- Target API Level: 32
 	- Set plugin provider to Oculus
-- Uncheck Custom Android Manifest in Project Settings --> Player --> Publishing Settings
 - XR Plug-in Management --> Android, Set plugin provider to Oculus (not OpenXR)
