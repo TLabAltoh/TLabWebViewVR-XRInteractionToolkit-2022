@@ -5,7 +5,7 @@
 - This sample is the minimum configuration for using TLabWebView with the XR Interaction Toolkit.
 
 ## Note
-- Android Custom Manifest Issue 1
+- Android Custom Manifest Issue 1  
 Unity 2021.1.* recommended adding the following to the manifest file
 ```xml
 <!-- For Unity-WebView -->
@@ -29,7 +29,7 @@ However, this is not recommended for Unity 2022.1.* and later.
 Adding this caused a problem with the manifest file not being properly configured at build time.
 It is recommended not to add these items to Android Custom Manifest after Unity 2022.1.*. (Creating Custom Manifest itself is not a problem)
 
-- Android Custom Manifest Issue 2
+- Android Custom Manifest Issue 2  
 When specifying OpenXR as the XR plugin provider, a part of the manifest is forcibly deleted and an error occurs in WebView. Therefore, it is recommended to specify Oculus as the plugin provider.
 ```xml
 <!-- Error: net::ERR_CACHE_MISS -->
