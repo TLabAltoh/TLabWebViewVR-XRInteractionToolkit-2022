@@ -5,7 +5,7 @@ using System.Xml;
 using UnityEditor.Android;
 using UnityEngine;
 
-#if UNITY_2018_1_OR_NEWER || UNITY_2022_1_OR_NEWER
+#if UNITY_2018_1_OR_NEWER
 public class UnityWebViewPostprocessBuild : IPostGenerateGradleAndroidProject
 {
     //// for android/unity 2018.1 or newer
@@ -123,7 +123,6 @@ internal class AndroidManifest : AndroidXmlDocument
         return attr;
     }
 
-#if UNITY_2018_1_OR_NEWER
     internal XmlNode GetActivityWithLaunchIntent()
     {
         return
@@ -132,7 +131,6 @@ internal class AndroidManifest : AndroidXmlDocument
                 + "intent-filter/category/@android:name='android.intent.category.LAUNCHER']",
                 nsMgr);
     }
-#endif
 
     internal bool AddApplicationElement(string attribute, bool enabled)
     {
@@ -174,7 +172,6 @@ internal class AndroidManifest : AndroidXmlDocument
         var changed = false;
         var value = enabled ? "true" : "false";
 
-#if UNITY_2018_1_OR_NEWER
         var activity = GetActivityWithLaunchIntent() as XmlElement;
         var attributeResult = activity.GetAttribute("hardwareAccelerated", AndroidXmlNamespace);
         if (attributeResult != value)
@@ -182,7 +179,7 @@ internal class AndroidManifest : AndroidXmlDocument
             activity.SetAttribute("hardwareAccelerated", AndroidXmlNamespace, (enabled) ? "true" : "false");
             changed = true;
         }
-#endif
+
         return changed;
     }
 
@@ -190,7 +187,6 @@ internal class AndroidManifest : AndroidXmlDocument
     {
         bool changed = false;
 
-#if UNITY_2018_1_OR_NEWER
         var activity = GetActivityWithLaunchIntent() as XmlElement;
         if (activity.GetAttribute("name", AndroidXmlNamespace) != name)
         {
@@ -202,7 +198,7 @@ internal class AndroidManifest : AndroidXmlDocument
         {
             Debug.Log("failed in SetActivityName");
         }
-#endif
+
         return changed;
     }
 
