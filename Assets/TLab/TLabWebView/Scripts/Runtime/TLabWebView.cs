@@ -64,14 +64,6 @@ namespace TLab.Android.WebView
 		[AOT.MonoPInvokeCallback(typeof(RenderEventDelegate))]
 		private static void RunOnRenderThread(int eventID)
 		{
-			if (m_NativeClass == null)
-			{
-				Debug.Log("native class no exists");
-				Debug.Log("create native class");
-				m_NativeClass = new AndroidJavaClass("com.tlab.libwebview.UnityConnect");
-				Debug.Log("create native class done !");
-			}
-
 			AndroidJNI.AttachCurrentThread();
 
 			IntPtr jniClass = AndroidJNI.FindClass("com/tlab/libwebview/UnityConnect");
@@ -356,6 +348,14 @@ namespace TLab.Android.WebView
 
 		private IEnumerator StartWebViewTask()
 		{
+			if (m_NativeClass == null)
+			{
+				Debug.Log("native class no exists");
+				Debug.Log("create native class");
+				m_NativeClass = new AndroidJavaClass("com.tlab.libwebview.UnityConnect");
+				Debug.Log("create native class done !");
+			}
+
 			yield return new WaitForEndOfFrame();
 
 #if UNITY_ANDROID && !UNITY_EDITOR || DEBUG

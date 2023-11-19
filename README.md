@@ -65,3 +65,7 @@ git clone . https://github.com/TLabAltoh/TLabWebViewVR-XRInteractionToolkit-2022
 	- Target API Level: 32
 	- Set plugin provider to Oculus
 - XR Plug-in Management --> Android, Set plugin provider to Oculus (not OpenXR)
+ 
+## Issue
+- After updating the repository, the built app crashes
+The specific cause of this problem is still unknown. Please delete the build cache (``` root/Library/Bee ```) and try building again.
