@@ -1,5 +1,5 @@
 ﻿#define DEBUG
-#undef DEBUG
+//#undef DEBUG
 #define ADVANCED
 #undef ADVANCED
 
@@ -72,7 +72,7 @@ namespace TLab.Android.WebView
 				Debug.Log("create native class done !");
 			}
 
-			//AndroidJNI.AttachCurrentThread();
+			AndroidJNI.AttachCurrentThread();
 
 			IntPtr jniClass = AndroidJNI.FindClass("com/tlab/libwebview/UnityConnect");
 			if (jniClass != IntPtr.Zero && jniClass != null) Debug.Log("jni class found ! : " + jniClass);
@@ -86,7 +86,7 @@ namespace TLab.Android.WebView
 			AndroidJNI.CallStaticVoidMethod(jniClass, jniFunc, new jvalue[] { });
 			Debug.Log("jni call method done !");
 
-			//AndroidJNI.DetachCurrentThread();
+			AndroidJNI.DetachCurrentThread();
 		}
 
 		public void Init(
@@ -388,7 +388,9 @@ namespace TLab.Android.WebView
 
             yield return new WaitForEndOfFrame();
 
-			while (IsInitialized()) yield return new WaitForEndOfFrame();
+			while (!IsInitialized()) yield return new WaitForEndOfFrame();
+
+			yield return new WaitForEndOfFrame();
 
 			m_webViewInitialized = true;
 			m_webViewEnable = true;
