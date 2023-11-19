@@ -1,10 +1,9 @@
 ﻿#define DEBUG
-//#undef DEBUG
+#undef DEBUG
 #define ADVANCED
 #undef ADVANCED
 
 using System.Collections;
-using System.Collections.Generic;
 using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
