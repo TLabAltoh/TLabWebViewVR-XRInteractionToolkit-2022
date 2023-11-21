@@ -1,7 +1,7 @@
 ﻿#define DEBUG
 //#undef DEBUG
 #define ADVANCED
-#undef ADVANCED
+//#undef ADVANCED
 
 using System.Collections;
 using System;
@@ -46,10 +46,12 @@ namespace TLab.Android.WebView
             }
 		}
 
-		private bool m_webViewEnable;
-		private bool m_webViewInitialized;
+		private bool m_webViewEnable = false;
+		private bool m_webViewInitialized = false;
 		private Texture2D m_webViewTexture;
 		private Coroutine m_webvieStartTask;
+
+		private IntPtr m_texId = IntPtr.Zero;
 
 #if UNITY_ANDROID
 		private static AndroidJavaClass m_NativeClass;
@@ -57,9 +59,11 @@ namespace TLab.Android.WebView
 #endif
 
 		private delegate void CheckEGLContextExist();
-		private delegate void RenderEventDelegate(int eventID);
+		private delegate void RenderEventDelegate(int eventIDint);
 		private static RenderEventDelegate RenderThreadHandle = new RenderEventDelegate(RunOnRenderThread);
 		private static IntPtr RenderThreadHandlePtr = Marshal.GetFunctionPointerForDelegate(RenderThreadHandle);
+
+		private static jvalue[] m_jniArgs;
 
 		[AOT.MonoPInvokeCallback(typeof(RenderEventDelegate))]
 		private static void RunOnRenderThread(int eventID)
@@ -70,12 +74,20 @@ namespace TLab.Android.WebView
 			if (jniClass != IntPtr.Zero && jniClass != null) Debug.Log("jni class found ! : " + jniClass);
 			else return;
 
-			//IntPtr jniFunc = AndroidJNI.GetStaticMethodID(jniClass, "unityJNITest", "()V");
-			IntPtr jniFunc = AndroidJNI.GetStaticMethodID(jniClass, "checkEGLContextExist", "()V");
+			IntPtr jniFunc;
+			jniFunc = AndroidJNI.GetStaticMethodID(jniClass, "checkEGLContextExist", "()V");
 			if (jniFunc != IntPtr.Zero && jniFunc != null) Debug.Log("jni function found ! : " + jniFunc);
 			else return;
 
 			AndroidJNI.CallStaticVoidMethod(jniClass, jniFunc, new jvalue[] { });
+			Debug.Log("jni call method done !");
+
+			//jniFunc = AndroidJNI.GetStaticMethodID(jniClass, "generateSharedTexture", "(Ljava/lang/Integer;Ljava/lang/Integer;)V");
+			jniFunc = AndroidJNI.GetStaticMethodID(jniClass, "generateSharedTexture", "(II)V");
+			if (jniFunc != IntPtr.Zero && jniFunc != null) Debug.Log("jni function found ! : " + jniFunc);
+			else return;
+
+			AndroidJNI.CallStaticVoidMethod(jniClass, jniFunc, m_jniArgs);
 			Debug.Log("jni call method done !");
 
 			AndroidJNI.DetachCurrentThread();
@@ -85,15 +97,12 @@ namespace TLab.Android.WebView
 			int webWidth, int webHeight,
 			int tWidth, int tHeight,
 			int sWidth, int sHeight,
-			string url, int dlOption, string subDir, IntPtr texId)
+			string url, int dlOption, string subDir)
 		{
 #if UNITY_ANDROID && !UNITY_EDITOR || DEBUG
-			var playerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
-			var currentActivityObject = playerClass.GetStatic<AndroidJavaObject>("currentActivity");
-
 			if (m_NativePlugin != null)
             {
-				m_NativePlugin.Call("initialize", webWidth, webHeight, tWidth, tHeight, sWidth, sHeight, url, dlOption, subDir, texId.ToInt32());
+				m_NativePlugin.Call("initialize", webWidth, webHeight, tWidth, tHeight, sWidth, sHeight, url, dlOption, subDir);
 			}
 #endif
 		}
@@ -141,12 +150,12 @@ namespace TLab.Android.WebView
 #endif
 		}
 
-		public IntPtr GetWebTexturePtr()
+		public IntPtr GetTexturePtr()
         {
 			if (!m_webViewEnable) return IntPtr.Zero;
 
 #if UNITY_ANDROID && !UNITY_EDITOR || DEBUG
-			return (IntPtr)(m_NativePlugin.Call<int>("getTexPtr"));
+			return (IntPtr)m_NativePlugin.Call<int>("getTexturePtr");
 #else
 			return IntPtr.Zero;
 #endif
@@ -346,6 +355,17 @@ namespace TLab.Android.WebView
 			uEvent.Invoke();
         }
 
+		private static void SetJNIParam(int[] args)
+        {
+			m_jniArgs = new jvalue[args.Length];
+			for(int i = 0; i < args.Length; i++)
+            {
+				m_jniArgs[i] = new jvalue { i = args[i] };
+            }
+			// https://forum.unity.com/threads/trying-to-implement-jni.147419/
+			//m_jniArgs = AndroidJNIHelper.CreateJNIArgArray();
+        }
+
 		private IEnumerator StartWebViewTask()
 		{
 			if (m_NativeClass == null)
@@ -361,15 +381,17 @@ namespace TLab.Android.WebView
 #if UNITY_ANDROID && !UNITY_EDITOR || DEBUG
 			m_NativePlugin = new AndroidJavaObject("com.tlab.libwebview.UnityConnect");
 
-			yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame();
 
             switch (SystemInfo.renderingThreadingMode)
             {
                 case UnityEngine.Rendering.RenderingThreadingMode.MultiThreaded:
+					SetJNIParam(new int[] { m_texWidth, m_texHeight } );
                     GL.IssuePluginEvent(RenderThreadHandlePtr, 0);
                     break;
                 default:
                     m_NativePlugin.CallStatic("checkEGLContextExist");
+					m_NativePlugin.CallStatic("generateSharedTexture", m_texWidth, m_texHeight);
                     break;
             }
 
@@ -384,18 +406,18 @@ namespace TLab.Android.WebView
                 m_webWidth, m_webHeight,
                 m_texWidth, m_texHeight,
                 Screen.width, Screen.height,
-                m_url, (int)m_dlOption, m_subdir, ((Texture2D)m_rawImage.texture).GetNativeTexturePtr());
+                m_url, (int)m_dlOption, m_subdir);
 
             yield return new WaitForEndOfFrame();
 
-			while (!IsInitialized()) yield return new WaitForEndOfFrame();
+            while (!IsInitialized()) yield return new WaitForEndOfFrame();
 
 			yield return new WaitForEndOfFrame();
 
 			m_webViewInitialized = true;
-			m_webViewEnable = true;
+            m_webViewEnable = true;
 
-			m_webvieStartTask = null;
+            m_webvieStartTask = null;
 #endif
 		}
 
@@ -427,7 +449,12 @@ namespace TLab.Android.WebView
                 m_webViewTexture.Apply();
             }
 #else
-            UpdateSurface();
+			IntPtr texId = GetTexturePtr();
+			if(m_texId != texId)
+            {
+				m_texId = texId;
+				m_webViewTexture.UpdateExternalTexture(texId);
+            }
 #endif
 		}
 
