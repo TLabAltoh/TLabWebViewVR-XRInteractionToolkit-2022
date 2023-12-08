@@ -878,6 +878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_keyborad: {fileID: 331540485}
+  m_activeOnAwake: 0
   m_webview: {fileID: 331540484}
   m_searchBar: {fileID: 2131234189}
 --- !u!114 &108137997
@@ -14582,6 +14583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_keyborad: {fileID: 649576463}
+  m_activeOnAwake: 0
   m_webview: {fileID: 649576462}
   m_searchBar: {fileID: 2078881501}
 --- !u!114 &986815626
@@ -21776,7 +21778,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-45, z: 1.4945e-41, w: 5.7756e-41}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 2.1483e-41, w: NaN}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
