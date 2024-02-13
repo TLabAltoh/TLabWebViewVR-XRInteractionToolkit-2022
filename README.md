@@ -43,7 +43,7 @@ When specifying OpenXR as the XR plugin provider, a part of the manifest is forc
 	- Use git submodule update --init to adjust the commit of the submodule to the version recommended by the project.
 
 ## Requirements
-- Unity Editor: 2022.3.11f1
+- Unity Editor: 2022.3.19f1
 
 ### Installing
 Clone the repository with the following command
