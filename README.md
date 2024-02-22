@@ -56,23 +56,38 @@ git submodule update --init
 ```
 
 ### Set up
-- Change platform to Android from Build Settings  
-- Add the following symbols to Project Settings --> Player --> Other Settings (to be used at build time)  
-	```
-	UNITYWEBVIEW_ANDROID_USES_CLEARTEXT_TRAFFIC
-	```
-	```
-	UNITYWEBVIEW_ANDROID_ENABLE_CAMERA
-	```
-	```
-	UNITYWEBVIEW_ANDROID_ENABLE_MICROPHONE
-	```
-	- Color Space: Linear
-	- Graphics: OpenGLES3
-	- Minimux API Level: 29 
-	- Target API Level: 32
-	- Set plugin provider to Oculus
-- XR Plug-in Management --> Android, Set plugin provider to Oculus (not OpenXR)
+- Build Settings  
+
+	| Setting items | value |
+	| --- | --- |  
+	| platform | android |  
+
+- Project Settings
+
+	| Setting items | value |
+	| --- | --- |  
+	| Color Space | Linear |  
+	| Graphics | OpenGLES3 |  
+	| Minimux API Level | 29 |  
+	| Target API Level | 32 |  
+
+	- Add the following symbols to Project Settings --> Player --> Other Settings (to be used at build time)  
+
+		```
+		UNITYWEBVIEW_ANDROID_USES_CLEARTEXT_TRAFFIC
+		```
+		```
+		UNITYWEBVIEW_ANDROID_ENABLE_CAMERA
+		```
+		```
+		UNITYWEBVIEW_ANDROID_ENABLE_MICROPHONE
+		```
+
+- XR Plug-in Management
+
+	| Setting items | value |
+	| --- | --- |  
+	| plugin provider | Oculus (not OpenXR) |  
  
 ## Issue
 - After updating the repository, the built app crashes
