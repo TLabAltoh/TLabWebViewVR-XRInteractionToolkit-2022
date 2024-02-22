@@ -76,4 +76,5 @@ git submodule update --init
  
 ## Issue
 - After updating the repository, the built app crashes
+
 	The specific cause of this problem is still unknown. Please delete the build cache (``` root/Library/Bee ```) and try building again.
