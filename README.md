@@ -46,10 +46,12 @@ When specifying OpenXR as the XR plugin provider, a part of the manifest is forc
 - Commit ``` 84f7b5e ``` If you cloned the project before, please clone the repository again.
 - Use ``` git submodule update --init ``` to adjust the commit of the submodule to the version recommended by the project.
 
-## Requirements
+## Getting Started
+
+### Requirements
 - Unity Editor: 2022.3.19f1
 
-## Installing
+### Installing
 Clone the repository with the following command
 ```
 git clone https://github.com/TLabAltoh/TLabWebViewVR-XRInteractionToolkit-2022.git
@@ -59,7 +61,7 @@ cd TLabWebViewVR-XRInteractionToolkit-2022
 git submodule update --init
 ```
 
-## Set up
+### Set up
 - Build Settings  
 
 | Setting items | value |
