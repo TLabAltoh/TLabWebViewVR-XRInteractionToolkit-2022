@@ -74,7 +74,7 @@ git submodule update --init
 | --- | --- |  
 | Color Space | Linear |  
 | Graphics | OpenGLES3 |  
-| Minimux API Level | 29 |  
+| Minimum API Level | 29 |  
 | Target API Level | 32 |  
 
 - Add the following symbols to Project Settings --> Player --> Other Settings (to be used at build time)  
