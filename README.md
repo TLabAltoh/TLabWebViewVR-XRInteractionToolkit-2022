@@ -1,10 +1,34 @@
+The parameters described [here](https://github.com/TLabAltoh/TLabWebViewVR#:~:text=Open%20Assets/TLab/TLabWebViewVR/OculusIntegration,within%20Unity%20(default%20512%20*%20512)) are used for initialisation, changes to variables after initialisation are not reflected in the webview. Therefore, the GUI for editing these parameters is not implemented in the example scene.
+
+To modify webview settings, change parameter in ``` TLabWebView.cs ``` from inspector with Unity Editor.
+
+<details><summary>すごく長い文章とかプログラムとか</summary>
+    
+## 見出し1
+- 本文
+
+## 見出し2
+- 本文
+    
+</details>
+
+The ``` Destroy ``` method is used to terminate the WebView application running in the background. It is only called by ``` OnDestroy ``` and ``` OnApplicationQuit ```, so it is my mistake to declare the Destroy method as a public function.
+
+If you want to destroy the WebView at runtime, you need to use [``` Object.Destroy ```](https://docs.unity3d.com/ja/2021.1/ScriptReference/Object.Destroy.html) to destroy the WebView prefab. And if you want to instantiate the WebView, you should call [``` Object.Instantiate ```](https://docs.unity3d.com/ja/2018.4/Manual/InstantiatingPrefabs.html) to create an instance of the WebView prefab.
+
 # TLabWebViewVR-XRInteractionToolkit-2022
 
 ## Overview
 - Sample project for using TLabWebView with Unity's VR templates
 - This sample is the minimum configuration for using TLabWebView with the XR Interaction Toolkit.
 
+## Document
+[document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)
+
 ## Note
+
+<details><summary>please see here</summary>
+
 ### Android Custom Manifest Issue 1
 
 Unity 2021.1.* recommended adding the following to the manifest file
@@ -46,6 +70,8 @@ When specifying OpenXR as the XR plugin provider, a part of the manifest is forc
 - Commit ``` 84f7b5e ``` If you cloned the project before, please clone the repository again.
 - Use ``` git submodule update --init ``` to adjust the commit of the submodule to the version recommended by the project.
 
+</details>
+    
 ## Getting Started
 
 ### Requirements
@@ -96,6 +122,11 @@ UNITYWEBVIEW_ANDROID_ENABLE_MICROPHONE
 | plugin provider | Oculus (not OpenXR) |  
  
 ## Issue
+
+<details><summary>please see here</summary>
+
 ### After updating the repository, the built app crashes
 
 The specific cause of this problem is still unknown. Please delete the build cache (``` root/Library/Bee ```) and try building again.
+    
+</details>
