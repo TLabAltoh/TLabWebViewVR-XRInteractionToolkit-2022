@@ -1,21 +1,3 @@
-The parameters described [here](https://github.com/TLabAltoh/TLabWebViewVR#:~:text=Open%20Assets/TLab/TLabWebViewVR/OculusIntegration,within%20Unity%20(default%20512%20*%20512)) are used for initialisation, changes to variables after initialisation are not reflected in the webview. Therefore, the GUI for editing these parameters is not implemented in the example scene.
-
-To modify webview settings, change parameter in ``` TLabWebView.cs ``` from inspector with Unity Editor.
-
-<details><summary>すごく長い文章とかプログラムとか</summary>
-    
-## 見出し1
-- 本文
-
-## 見出し2
-- 本文
-    
-</details>
-
-The ``` Destroy ``` method is used to terminate the WebView application running in the background. It is only called by ``` OnDestroy ``` and ``` OnApplicationQuit ```, so it is my mistake to declare the Destroy method as a public function.
-
-If you want to destroy the WebView at runtime, you need to use [``` Object.Destroy ```](https://docs.unity3d.com/ja/2021.1/ScriptReference/Object.Destroy.html) to destroy the WebView prefab. And if you want to instantiate the WebView, you should call [``` Object.Instantiate ```](https://docs.unity3d.com/ja/2018.4/Manual/InstantiatingPrefabs.html) to create an instance of the WebView prefab.
-
 # TLabWebViewVR-XRInteractionToolkit-2022
 
 ## Overview
