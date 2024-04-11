@@ -72,7 +72,7 @@ cd TLabWebViewVR-XRInteractionToolkit-2022
 git submodule update --init
 ```
 
-### Set up
+### Set Up
 - Build Settings
 
 | Property      | Value   |
