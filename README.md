@@ -1,8 +1,7 @@
 # TLabWebViewVR-XRInteractionToolkit-2022
 
 ## Overview
-- Sample project for using TLabWebView with Unity's VR templates
-- This sample is the minimum configuration for using TLabWebView with the XR Interaction Toolkit.
+This sample is the minimum configuration for using TLabWebView with the XR Interaction Toolkit.
 
 ## Document
 [document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)
@@ -46,14 +45,8 @@ When specifying OpenXR as the XR plugin provider, a part of the manifest is forc
 <uses-permission android:name="ANDROID.PERMISSION.INTERNET"/> <!-- Missing !! -->
 ```
 
-### Issue 3 (After updating the repository, the built app crashes)
-
-The specific cause of this problem is still unknown. Please delete the build cache (``` root/Library/Bee ```) and try building again.
-
-### The policy has been changed to manage libraries in the repository as submodules
-
-- Commit ``` f26c332 ``` If you cloned the project before, please clone the repository again.
-- Use ``` git submodule update --init ``` to adjust the commit of the submodule to the version recommended by the project.
+### Module Management Policy Modified
+The policy has been changed to manage libraries in the repository as submodules after commit ``` 4a7a833 ```. Please run ``` git submodule update --init ``` to adjust the commit of the submodule to the version recommended by the project.
 
 </details>
     
