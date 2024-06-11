@@ -77,7 +77,6 @@ git submodule update --init
 | Property          | Value     |
 | ----------------- | --------- |
 | Color Space       | Linear    |
-| Graphics          | OpenGLES3 |
 | Minimum API Level | 29        |
 | Target API Level  | 32        |
 
