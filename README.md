@@ -1,10 +1,11 @@
 # TLabWebViewVR-XRInteractionToolkit-2022
 
 ## Overview
-This sample is the minimum configuration for using TLabWebView with the XR Interaction Toolkit. This includes searchbar example.
+This sample is the minimum configuration for using [```TLabWebView```}(https://github.com/TLabAltoh/TLabWebView) with the [```XR Interaction Toolkit```](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/index.html). This includes searchbar example.
 
 ## Document
-[document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)
+[Document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)  
+[Snippets is here](https://gist.github.com/TLabAltoh/e0512b3367c25d3e1ec28ddbe95da497#file-tlabwebview-snippets-md)
     
 ## Getting Started
 
@@ -22,28 +23,4 @@ git submodule update --init
 ```
 
 ### Set Up
-- Build Settings
-
-| Property | Value   |
-| -------- | ------- |
-| Platform | Android |
-
-- Project Settings
-
-| Property          | Value  |
-| ----------------- | ------ |
-| Color Space       | Linear |
-| Minimum API Level | 29     |
-| Target API Level  | 32     |
-
-- Add the following symbols to Project Settings --> Player --> Other Settings (to be used at build time)  
-
-```
-UNITYWEBVIEW_ANDROID_USES_CLEARTEXT_TRAFFIC
-```
-```
-UNITYWEBVIEW_ANDROID_ENABLE_CAMERA
-```
-```
-UNITYWEBVIEW_ANDROID_ENABLE_MICROPHONE
-```
+Please see the setup section [here](https://github.com/TLabAltoh/TLabWebView.git)
