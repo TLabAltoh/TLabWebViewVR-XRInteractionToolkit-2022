@@ -897,9 +897,6 @@ MonoBehaviour:
   m_onBackSpacePressed:
     m_PersistentCalls:
       m_Calls: []
-  m_onSymbolPressed:
-    m_PersistentCalls:
-      m_Calls: []
   m_onKeyPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -16119,9 +16116,6 @@ MonoBehaviour:
   m_onBackSpacePressed:
     m_PersistentCalls:
       m_Calls: []
-  m_onSymbolPressed:
-    m_PersistentCalls:
-      m_Calls: []
   m_onKeyPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -23330,7 +23324,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 6e-45, z: 2.4824e-41, w: 7.17e-43}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 2.1069e-41, w: 3.2726253e+22}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
