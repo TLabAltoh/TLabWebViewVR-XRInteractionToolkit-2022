@@ -1,7 +1,7 @@
 # TLabWebViewVR-XRInteractionToolkit-2022
 
 ## Overview
-This sample is the minimum configuration for using [```TLabWebView```](https://github.com/TLabAltoh/TLabWebView) (3D web browser / 3D WebView plugin) with the [```XR Interaction Toolkit```](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/index.html). This includes searchbar example.
+This sample Unity project is the minimum configuration for using [```TLabWebView```](https://github.com/TLabAltoh/TLabWebView) (3D web browser / 3D WebView plugin) with the [```XR Interaction Toolkit```](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/index.html). This includes searchbar example.
 
 ## Document
 [Document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)  
