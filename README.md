@@ -24,3 +24,11 @@ git submodule update --init
 
 ### Set Up
 Please see the setup section [here](https://github.com/TLabAltoh/TLabWebView?tab=readme-ov-file#set-up)
+
+<details><summary>When using the OpenXR plugin</summary>
+
+Please disable `Force Remove Internet Permission` from XR Plugin Manegement
+
+<img src="Media/image.png" width="512"></img>
+
+</details>
