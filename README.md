@@ -3,6 +3,9 @@
 ## Overview
 This sample Unity project is the minimum configuration for using [```TLabWebView```](https://github.com/TLabAltoh/TLabWebView) (3D web browser / 3D WebView plugin) with the [```XR Interaction Toolkit```](https://docs.unity3d.com/Packages/com.unity.xr.interaction.toolkit@2.5/manual/index.html). This includes searchbar example.
 
+> [!NOTE]
+> This repository will be public archived and rebuilt in the future. This project was originally upgraded from the Unity 2021 VR template to Unity 2022, so the XR Interaction Toolkit cannot be safely upgraded to 3.0.x. Currently, the XR Interaction Toolkit is kept at version 2.5.4.
+
 > [!WARNING]
 > Note that this project only works on Android devices; it will not display web pages when run on the Unity Editor.
 
