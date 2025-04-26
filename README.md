@@ -9,6 +9,17 @@ This sample Unity project is the minimum configuration for using [```TLabWebView
 > [!WARNING]
 > Note that this project only works on Android devices; it will not display web pages when run on the Unity Editor.
 
+> [!WARNING]
+> For now, I do not recommend building this project with Unity 6000.x due to unstable. If you do, please refer to the "Configuration for Unity 6000.x" section in the [Setup section](https://github.com/TLabAltoh/TLabWebView?tab=readme-ov-file#set-up).
+
+> [!WARNING]
+> This project uses `HardwareBuffer` as the default `CaptureMode` for WebView. This `HardwareBuffer` option is confirmed to work with Oculus Quest, but may not work with some other devices (e.g., the WebView screen may go blank). In that case, change the `CaptureMode` from `HardwareBuffer` to `ByteBuffer`.
+>
+> <details>
+> <img src="Media/image.0.png" width="256"></img><br>
+> <img src="Media/image.1.png" width="256"></img>
+> </details>
+
 ## Document
 [Document is here](https://tlabgames.gitbook.io/tlabwebview/scripting-api)  
 [Snippets is here](https://gist.github.com/TLabAltoh/e0512b3367c25d3e1ec28ddbe95da497#file-tlabwebview-snippets-md)
